@@ -49,11 +49,29 @@ $(function() {
 			}
 		}) //ajax
 	})//b1
+	
+	$('#b2').click(function(){
+		$('#d1').empty()
+		$.ajax({
+			url:"data/car.xml",
+			success: function(xml){
+				let list = $(xml).find('record')
+				for (let i = 0; i < list.length; i++) {
+					let id = $(list[i]).find('id').text() 
+					let email = $(list[i]).find('email').text() 
+					let car = $(list[i]).find('car').text()
+					$('#d1').append(id + " " + email + " " + car + "<br>")
+				}//for
+			} //success
+		}) //ajax
+	}) //b2
 })//$
 </script>
 </head>
 <body>
 <button id="b1">car.json읽어와서 추출하기</button>
 <button id="b2">car.xml읽어와서 추출하기</button>
+<hr>
+<div id = "d1" style="background: pink"></div>
 </body>
 </html>

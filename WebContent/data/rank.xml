@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<result>
+	<item>
+		<rank>
+			<name>김연아</name>
+			<tel>010</tel>
+		</rank>
+	</item>
+	<item>
+		<rank>
+			<name>김세모</name>
+			<tel>011</tel>
+		</rank>
+	</item>
+	<item>
+		<rank>
+			<name>김네모</name>
+			<tel>012</tel>
+		</rank>
+	</item>
+</result>

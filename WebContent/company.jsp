@@ -37,11 +37,31 @@ $(function(){
 			}
 		}) //ajax
 	})//b1
+	
+	$('#b2').click(function(){
+		$('#d1').empty()
+		$.ajax({
+			url:"data/company.xml",
+			success: function(xml){
+				let list = $(xml).find('record')
+				for (let i = 0; i < list.length; i++) {
+					let id = $(list[i]).find('id').text() 
+					let name = $(list[i]).find('name').text() 
+					let addr = $(list[i]).find('addr').text()
+					let tel = $(list[i]).find('tel').text()
+					let domain = $(list[i]).find('domain').text()
+					$('#d1').append(id + " " + name + " " + addr + " " + tel + " " + domain + "<br>")
+				}//for
+			} //success
+		}) //ajax
+	}) //b2
 })//$
 </script>
 </head>
 <body>
 	<button id="b1">company.json 읽어와서 추출하기</button>
 	<button id="b2">company.xml 읽어와서 추출하기</button>
+	<hr>
+	<div id = "d1" style="background: pink"></div>
 </body>
 </html>
