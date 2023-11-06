@@ -35,8 +35,14 @@ $(function() {
 							email: emailValue,
 							car: carValue
 						},
-						success: function() {
-							console.log('db저장 성공')
+						success: function(result) {
+							console.log(result)
+							console.log(result.length)
+							if(result.trim()=='1'){
+								console.log('db저장 성공')
+							}else{
+								console.log('db저장 실패')
+							}
 						}
 					})
 				})

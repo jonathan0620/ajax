@@ -25,18 +25,19 @@ public class CarDAO {
 			Connection con = DriverManager.getConnection(url, user, password); // Connection
 			System.out.println("2. db연결 성공.@@@@@@");
 
-		// 3.SQL문 결정/생성
-		String sql = "insert into car values (?,?,?)";
-		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setString(1, dto.getId());
-		ps.setString(2, dto.getEmail());
-		ps.setString(3, dto.getCar());
-		System.out.println("3.ok----------");
-
-		// 4.DB로 SQL문 전송
-		result = ps.executeUpdate(); //1
-		System.out.println("4.ok----------");
+			// 3.SQL문 결정/생성
+			String sql = "insert into car values (?,?,?)";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, dto.getId());
+			ps.setString(2, dto.getEmail());
+			ps.setString(3, dto.getCar());
+			System.out.println("3.ok----------");
+	
+			// 4.DB로 SQL문 전송
+			result = ps.executeUpdate(); //1
+			System.out.println("4.ok----------");
 		}catch(Exception e) {
+			e.printStackTrace();
 			System.out.println("에러가 발생함.");
 		}
 		return result; //1, 0
