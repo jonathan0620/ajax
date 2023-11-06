@@ -7,11 +7,11 @@ import java.sql.ResultSet;
 
 //DB를 접근하여 CRUD처리만 담당하는 부품
 //다른 역할을 하지 않음.
-public class CarDAO {
+public class CompanyDAO {
 
 	// 각각의 처리를 메서드(함수)로 만들어라.
 	// 가입처리
-	public int insert(CarDTO dto) {
+	public int insert(CompanyDTO dto) {
 		int result = 0;
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -26,22 +26,25 @@ public class CarDAO {
 			System.out.println("2. db연결 성공.@@@@@@");
 
 			// 3.SQL문 결정/생성
-			String sql = "insert into car values (?,?,?)";
+			String sql = "insert into company2 values (?,?,?,?,?)";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, dto.getId());
-			ps.setString(2, dto.getEmail());
-			ps.setString(3, dto.getCar());
+			ps.setString(2, dto.getName());
+			ps.setString(3, dto.getAddr());
+			ps.setString(4, dto.getTel());
+			ps.setString(5, dto.getDomain());
 			System.out.println("3.ok----------");
-	
+
 			// 4.DB로 SQL문 전송
-			result = ps.executeUpdate(); //1
+			result = ps.executeUpdate(); // 1
 			System.out.println("4.ok----------");
 			ps.close();
 			con.close();
-		}catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("에러가 발생함.");
 		}
-		return result; //1, 0
+		return result; // 1, 0
 	}
+
 }

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,19 +16,32 @@ $(function(){
 			url:"data/company.json",
 			success: function(arr) {
 				alert(arr.length)
-				for (let i = 0; i < arr.length; i++) {
+				for (var i = 0; i < arr.length; i++) {
 					console.log(arr[i].addr)
 					console.log(arr[i].domain)
 					console.log('-------------')
+					$.ajax({
+						url: "db_create2.jsp",
+						data: {
+							id: arr[i].id,
+							name: arr[i].name,
+							addr: arr[i].addr,
+							tel: arr[i].tel,
+							domain: arr[i].domain
+						},
+						success: function(result) {
+							console.log(result)
+						}
+					})
 				}
 			}
-		})//ajax
+		}) //ajax
 	})//b1
 })//$
 </script>
 </head>
 <body>
-<button id = "b1">company.json 읽어와서 추출하기</button>
-<button id = "b2">company.xml 읽어와서 추출하기</button>
+	<button id="b1">company.json 읽어와서 추출하기</button>
+	<button id="b2">company.xml 읽어와서 추출하기</button>
 </body>
 </html>
